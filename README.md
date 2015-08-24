@@ -30,11 +30,10 @@ Failures:
   1) MyLib .major_version should be equal 1
      Failure/Error: assert MyLib.major_version == 1
 
-         MyLib.major_version == 1
-         |                   |  |
-         |                   |  1
-         |                   false
-         2
+         Mylib.major_version == 1
+               │            │
+               │            └ false
+               └ 2
 
      # ./spec/my_lib_spec.cr:6
 ```
@@ -62,11 +61,8 @@ Failures:
      Failure/Error: assert 1 == 2
 
          1 == 2
-         | |  |
-         | false
-         |    |
-         |    2
-         1
+           │
+           └ false
 
      # ./spec/power_assert_spec.cr:23
 
@@ -74,11 +70,8 @@ Failures:
      Failure/Error: assert 1 > 2
 
          1 > 2
-         | | |
-         | false
-         |   |
-         |   2
-         1
+           │
+           └ false
 
      # ./spec/power_assert_spec.cr:27
 
@@ -86,11 +79,9 @@ Failures:
      Failure/Error: assert falsey == true
 
          falsey == true
-         |      |  |
-         |      false
-         |         |
-         |         true
-         false
+         │     │
+         │     └ false
+         └ false
 
      # ./spec/power_assert_spec.cr:33
 
@@ -98,12 +89,13 @@ Failures:
      Failure/Error: assert example.falsey(one, two, three)
 
          example.falsey(one, two, three)
-         |       |      |    |    |
-         |       false  |    |    |
-         |              1    |    |
-         |                   2    |
-         |                        3
-         #<PowerAssert::Example:0x1087a6ee0>
+         │      │     │   │   │
+         │      └ false    │   │
+         │             │   │   │
+         │             └ 1 │   │
+         │                  └ 2 │
+         │                       └ 3
+         └ #<PowerAssert::Example:0x1087a6ee0>
 
      # ./spec/power_assert_spec.cr:42
 
@@ -111,12 +103,10 @@ Failures:
      Failure/Error: assert example.one == 2
 
          example.one == 2
-         |       |   |  |
-         |       |   false
-         |       |      |
-         |       |      2
-         |       1
-         #<PowerAssert::Example:0x1087a6e60>
+         │      │  │
+         │      │  └ false
+         │      └ 1
+         └ #<PowerAssert::Example:0x1087a6e60>
 
      # ./spec/power_assert_spec.cr:48
 
@@ -124,14 +114,14 @@ Failures:
      Failure/Error: assert array.any? { |n| n == 0 }.nil?
 
          array.any? { ... }.nil?
-         |     |            |
-         |     |            false
-         |     false
-         [1, 2, 3]
+         │    │           │
+         │    │           └ false
+         │    └ false
+         └ [1, 2, 3]
 
      # ./spec/power_assert_spec.cr:54
 
-Finished in 2.16 milliseconds
+Finished in 7.01 milliseconds
 6 examples, 6 failures, 0 errors, 0 pending
 
 Failed examples:
